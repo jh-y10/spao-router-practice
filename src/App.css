@@ -168,8 +168,13 @@ nav {
   font-weight: 700;
 }
 
+.product-card {
+  width: auto;
+  height: auto;
+}
+
 .product-card:hover {
-  transform: scale(1.09);
+  transform: scale(1.07);
 }
 
 .product-card p:first-of-type {
