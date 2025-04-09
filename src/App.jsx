@@ -16,10 +16,8 @@ function App() {
   const useSearchToggle = (toggle) => {
     if (toggle === false) {
       setSearchToggle(true);
-      console.log("true");
     } else {
       setSearchToggle(false);
-      console.log("false");
     }
   };
 

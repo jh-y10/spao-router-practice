@@ -21,7 +21,7 @@ const ProductAll = () => {
   }, []);
 
   return (
-    <div>
+    <div className="product-all">
       <Carousel className="carousel-container">
         <Carousel.Item>
           <img

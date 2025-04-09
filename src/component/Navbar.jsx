@@ -25,6 +25,10 @@ const Navbar = ({ searchToggle, useSearchToggle }) => {
     navigate("/login");
   };
 
+  const goToHomePage = () => {
+    navigate("/");
+  };
+
   return (
     <nav>
       <div className="menu-area">
@@ -32,7 +36,7 @@ const Navbar = ({ searchToggle, useSearchToggle }) => {
           <button type="button">
             <FontAwesomeIcon icon={faBars} />
           </button>
-          <h1>
+          <h1 onClick={goToHomePage}>
             <img src="https://www.spao.com/morenvyimg/top_logo_pc.png" alt="" />
           </h1>
         </div>

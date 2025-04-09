@@ -13,12 +13,17 @@ button {
 }
 
 nav {
+  position: fixed;
+  top: 0;
+  z-index: 1;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
   height: 90px;
   padding: 24px 70px;
   border-bottom: 1px solid #e5e5e5;
+  background-color: #fff;
 }
 
 .menu-area {
@@ -46,6 +51,10 @@ nav {
   list-style: none;
 }
 
+.menu-area ul:hover li a {
+  opacity: 0.5;
+}
+
 .menu-area li {
   padding: 0 13px;
 }
@@ -55,12 +64,16 @@ nav {
   color: #000;
 }
 
+.menu-area ul:hover li a:hover {
+  opacity: 1;
+}
+
 .menu-area li:last-child a {
   color: #c41e20;
 }
 
 .button-area:hover button {
-  color: gray;
+  opacity: 0.5;
   transition: all 250ms ease-out;
 }
 
@@ -72,28 +85,24 @@ nav {
   cursor: pointer;
 }
 
-.button-area button:hover {
-  color: #000;
+.button-area:hover button:hover {
+  opacity: 1;
 }
 
 .search-area {
-  position: absolute;
+  position: fixed;
   top: 90px;
-  left: 0;
-  z-index: -1;
+  z-index: 1;
   width: 100%;
-  height: 1px;
+  height: 0;
   padding: 60px 100px;
   background-color: #fff;
-  overflow: hidden;
   opacity: 0;
-  transition: all 500ms ease-in-out;
+  transition: height 500ms ease-in-out, opacity 500ms ease-in-out;
 }
 
 .search-area.active {
-  z-index: 1;
   height: 100vh;
-  overflow: auto;
   opacity: 1;
 }
 
@@ -126,12 +135,17 @@ nav {
   font-size: 36px;
 }
 
+.product-all {
+  position: relative;
+  top: 90px;
+}
+
 .carousel-container {
   margin-bottom: 100px;
 }
 
 .carousel-container img {
-  width: 100vw;
+  width: 100%;
   height: auto;
 }
 
@@ -144,6 +158,9 @@ nav {
 }
 
 .card-container h2 {
+  position: relative;
+  top: 0;
+  left: -16px;
   margin-bottom: 100px;
   text-align: center;
   font-size: 42px;
@@ -180,7 +197,7 @@ nav {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 100px;
+  padding-top: 30vh;
 }
 
 .login-area h1 {
