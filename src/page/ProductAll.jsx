@@ -9,7 +9,7 @@ const ProductAll = () => {
   const [productList, setProductList] = useState([]);
 
   const getProducts = async () => {
-    let url = "https://my-json-server.typicode.com/products";
+    let url = "https://my-json-server.typicode.com/jh-y10/spao-router-practice/products";
     let response = await fetch(url);
     let data = await response.json();
     console.log(data);
