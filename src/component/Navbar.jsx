@@ -5,6 +5,7 @@ import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router";
 
 const Navbar = ({ searchToggle, useSearchToggle }) => {
   const menuList = [
@@ -17,6 +18,12 @@ const Navbar = ({ searchToggle, useSearchToggle }) => {
     "이벤트",
     "할인상품",
   ];
+
+  const navigate = useNavigate();
+
+  const goToLogin = () => {
+    navigate("/login");
+  };
 
   return (
     <nav>
@@ -39,7 +46,7 @@ const Navbar = ({ searchToggle, useSearchToggle }) => {
       </div>
       <div className="button-area">
         <button type="button">
-          <FontAwesomeIcon icon={faUser} />
+          <FontAwesomeIcon icon={faUser} onClick={goToLogin} />
         </button>
         <button type="button" onClick={() => useSearchToggle(searchToggle)}>
           <FontAwesomeIcon icon={faMagnifyingGlass} />
