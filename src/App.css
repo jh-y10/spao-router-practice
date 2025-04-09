@@ -3,6 +3,11 @@
   margin: 0;
 }
 
+body {
+  height: 100dvh;
+  font-family: "Noto Sans KR", sans-serif;
+}
+
 .sr-only {
   display: none;
 }
