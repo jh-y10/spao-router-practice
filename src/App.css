@@ -62,6 +62,7 @@ nav {
 .menu-area li a {
   text-decoration: none;
   color: #000;
+  cursor: pointer;
 }
 
 .menu-area ul:hover li a:hover {
@@ -168,7 +169,7 @@ nav {
 }
 
 .product-card:hover {
-  transform: scale(1.05);
+  transform: scale(1.09);
 }
 
 .product-card p:first-of-type {
