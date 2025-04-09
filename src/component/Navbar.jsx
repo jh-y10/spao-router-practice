@@ -6,6 +6,7 @@ import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router";
+import logoImg from "../assets/logo.png";
 
 const Navbar = ({ searchToggle, useSearchToggle }) => {
   const menuList = [
@@ -37,7 +38,7 @@ const Navbar = ({ searchToggle, useSearchToggle }) => {
             <FontAwesomeIcon icon={faBars} />
           </button>
           <h1 onClick={goToHomePage}>
-            <img src="https://www.spao.com/morenvyimg/top_logo_pc.png" alt="" />
+            <img src={logoImg} alt="" />
           </h1>
         </div>
         <ul>
