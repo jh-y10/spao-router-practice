@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-regular-svg-icons";
+import { faUserMinus } from "@fortawesome/free-solid-svg-icons";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { faHeart } from "@fortawesome/free-regular-svg-icons";
 import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
@@ -8,7 +9,14 @@ import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router";
 import logoImg from "../assets/logo.png";
 
-const Navbar = ({ searchToggle, useSearchToggle }) => {
+const Navbar = ({
+  searchToggle,
+  useSearchToggle,
+  authenticate,
+  setAuthenticate,
+  setSideBar,
+}) => {
+
   const menuList = [
     "우먼",
     "맨",
@@ -26,15 +34,25 @@ const Navbar = ({ searchToggle, useSearchToggle }) => {
     navigate("/login");
   };
 
+  const logout = () => {
+    setAuthenticate(false);
+    navigate("/");
+  };
+
   const goToHomePage = () => {
     navigate("/");
   };
+
+  const sideBarToggle = () => {
+    setSideBar(true);
+    useSearchToggle(true);
+  }
 
   return (
     <nav>
       <div className="menu-area">
         <div className="side-menu-area">
-          <button type="button">
+          <button type="button" onClick={() => sideBarToggle()}>
             <FontAwesomeIcon icon={faBars} />
           </button>
           <h1 onClick={goToHomePage}>
@@ -51,7 +69,11 @@ const Navbar = ({ searchToggle, useSearchToggle }) => {
       </div>
       <div className="button-area">
         <button type="button">
-          <FontAwesomeIcon icon={faUser} onClick={goToLogin} />
+          {authenticate === false ? (
+            <FontAwesomeIcon icon={faUser} onClick={goToLogin} />
+          ) : (
+            <FontAwesomeIcon icon={faUserMinus} onClick={logout} />
+          )}
         </button>
         <button type="button" onClick={() => useSearchToggle(searchToggle)}>
           <FontAwesomeIcon icon={faMagnifyingGlass} />

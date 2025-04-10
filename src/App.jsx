@@ -12,25 +12,41 @@ import PrivateRoute from "./route/PrivateRoute";
 function App() {
   const [searchToggle, setSearchToggle] = useState(false);
   const [authenticate, setAuthenticate] = useState(false);
+  const [sideBar, setSideBar] = useState(false);
 
   const useSearchToggle = (toggle) => {
     if (toggle === false) {
       setSearchToggle(true);
+      setSideBar(false);
     } else {
       setSearchToggle(false);
     }
   };
 
-  useEffect(() => {
-    console.log("auth", authenticate);
-  }, [authenticate]);
-
   return (
     <div>
-      <Navbar searchToggle={searchToggle} useSearchToggle={useSearchToggle} />
-      <Search searchToggle={searchToggle} />
+      <Navbar
+        searchToggle={searchToggle}
+        useSearchToggle={useSearchToggle}
+        authenticate={authenticate}
+        setAuthenticate={setAuthenticate}
+        setSideBar={setSideBar}
+      />
+      <Search searchToggle={searchToggle} useSearchToggle={useSearchToggle} />
       <Routes>
-        <Route path="/" element={<ProductAll />} />
+        <Route
+          path="/"
+          element={
+            <ProductAll
+              sideBar={sideBar}
+              setSideBar={setSideBar}
+              useSearchToggle={useSearchToggle}
+              searchToggle={searchToggle}
+              authenticate={authenticate}
+              setAuthenticate={setAuthenticate}
+            />
+          }
+        />
         <Route
           path="/login"
           element={<Login setAuthenticate={setAuthenticate} />}

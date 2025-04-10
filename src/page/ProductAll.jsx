@@ -4,24 +4,43 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Carousel from "react-bootstrap/Carousel";
+import { useSearchParams } from "react-router";
+import SideMenu from "../component/SideMenu";
 
-const ProductAll = () => {
+const ProductAll = ({
+  sideBar,
+  setSideBar,
+  searchToggle,
+  useSearchToggle,
+  authenticate,
+  setAuthenticate,
+}) => {
   const [productList, setProductList] = useState([]);
+  const [query, setQuery] = useSearchParams();
 
   const getProducts = async () => {
-    let url = "https://my-json-server.typicode.com/jh-y10/spao-router-practice/products";
+    let searchQuery = query.get("q") || "";
+    console.log("쿼리값은?", searchQuery);
+    let url = `https://my-json-server.typicode.com/jh-y10/spao-router-practice/products?q=${searchQuery}`;
     let response = await fetch(url);
     let data = await response.json();
-    console.log(data);
     setProductList(data);
   };
 
   useEffect(() => {
     getProducts();
-  }, []);
+  }, [query]);
 
   return (
     <div className="product-all">
+      <SideMenu
+        sideBar={sideBar}
+        setSideBar={setSideBar}
+        searchToggle={searchToggle}
+        useSearchToggle={useSearchToggle}
+        authenticate = {authenticate}
+        setAuthenticate={setAuthenticate}
+      />
       <Carousel className="carousel-container">
         <Carousel.Item>
           <img
@@ -72,13 +91,21 @@ const ProductAll = () => {
       </Carousel>
       <Container className="card-container">
         <h2>위클리 베스트</h2>
-        <Row>
-          {productList.map((item) => (
-            <Col lg={3}>
-              <ProductCard item={item} />
+        {productList.length !== 0 ? (
+          <Row>
+            {productList.map((item) => (
+              <Col lg={3} md={6}>
+                <ProductCard item={item} />
+              </Col>
+            ))}
+          </Row>
+        ) : (
+          <Row>
+            <Col lg={12}>
+              <strong className="no-search">검색 결과가 없습니다</strong>
             </Col>
-          ))}
-        </Row>
+          </Row>
+        )}
       </Container>
     </div>
   );
