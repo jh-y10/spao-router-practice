@@ -227,6 +227,7 @@ nav {
   border: 1px solid #e5e5e5;
   margin-bottom: 30px;
   outline: none;
+  z-index: 1;
 }
 
 @media screen and (max-width: 1080px) {
