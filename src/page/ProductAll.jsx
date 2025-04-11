@@ -5,22 +5,13 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Carousel from "react-bootstrap/Carousel";
 import { useSearchParams } from "react-router";
-import SideMenu from "../component/SideMenu";
 
-const ProductAll = ({
-  sideBar,
-  setSideBar,
-  searchToggle,
-  useSearchToggle,
-  authenticate,
-  setAuthenticate,
-}) => {
+const ProductAll = () => {
   const [productList, setProductList] = useState([]);
   const [query, setQuery] = useSearchParams();
 
   const getProducts = async () => {
     let searchQuery = query.get("q") || "";
-    console.log("쿼리값은?", searchQuery);
     let url = `https://my-json-server.typicode.com/jh-y10/spao-router-practice/products?q=${searchQuery}`;
     let response = await fetch(url);
     let data = await response.json();
@@ -33,14 +24,6 @@ const ProductAll = ({
 
   return (
     <div className="product-all">
-      <SideMenu
-        sideBar={sideBar}
-        setSideBar={setSideBar}
-        searchToggle={searchToggle}
-        useSearchToggle={useSearchToggle}
-        authenticate = {authenticate}
-        setAuthenticate={setAuthenticate}
-      />
       <Carousel className="carousel-container">
         <Carousel.Item>
           <img

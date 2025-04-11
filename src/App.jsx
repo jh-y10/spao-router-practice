@@ -23,6 +23,10 @@ function App() {
     }
   };
 
+  useEffect(() => {
+    console.log(sideBar);
+  }, [sideBar]);
+
   return (
     <div>
       <Navbar
@@ -31,6 +35,7 @@ function App() {
         authenticate={authenticate}
         setAuthenticate={setAuthenticate}
         setSideBar={setSideBar}
+        sideBar={sideBar}
       />
       <Search searchToggle={searchToggle} useSearchToggle={useSearchToggle} />
       <Routes>

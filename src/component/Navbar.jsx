@@ -8,6 +8,7 @@ import { faBagShopping } from "@fortawesome/free-solid-svg-icons";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router";
 import logoImg from "../assets/logo.png";
+import SideMenu from "../component/SideMenu";
 
 const Navbar = ({
   searchToggle,
@@ -15,8 +16,8 @@ const Navbar = ({
   authenticate,
   setAuthenticate,
   setSideBar,
+  sideBar,
 }) => {
-
   const menuList = [
     "우먼",
     "맨",
@@ -46,46 +47,56 @@ const Navbar = ({
   const sideBarToggle = () => {
     setSideBar(true);
     useSearchToggle(true);
-  }
+  };
 
   return (
-    <nav>
-      <div className="menu-area">
-        <div className="side-menu-area">
-          <button type="button" onClick={() => sideBarToggle()}>
-            <FontAwesomeIcon icon={faBars} />
-          </button>
-          <h1 onClick={goToHomePage}>
-            <img src={logoImg} alt="" />
-          </h1>
+    <div>
+      <SideMenu
+        sideBar={sideBar}
+        setSideBar={setSideBar}
+        searchToggle={searchToggle}
+        useSearchToggle={useSearchToggle}
+        authenticate={authenticate}
+        setAuthenticate={setAuthenticate}
+      />
+      <nav>
+        <div className="menu-area">
+          <div className="side-menu-area">
+            <button type="button" onClick={() => sideBarToggle()}>
+              <FontAwesomeIcon icon={faBars} />
+            </button>
+            <h1 onClick={goToHomePage}>
+              <img src={logoImg} alt="" />
+            </h1>
+          </div>
+          <ul>
+            {menuList.map((menu) => (
+              <li>
+                <a href="#">{menu}</a>
+              </li>
+            ))}
+          </ul>
         </div>
-        <ul>
-          {menuList.map((menu) => (
-            <li>
-              <a href="#">{menu}</a>
-            </li>
-          ))}
-        </ul>
-      </div>
-      <div className="button-area">
-        <button type="button">
-          {authenticate === false ? (
-            <FontAwesomeIcon icon={faUser} onClick={goToLogin} />
-          ) : (
-            <FontAwesomeIcon icon={faUserMinus} onClick={logout} />
-          )}
-        </button>
-        <button type="button" onClick={() => useSearchToggle(searchToggle)}>
-          <FontAwesomeIcon icon={faMagnifyingGlass} />
-        </button>
-        <button type="button">
-          <FontAwesomeIcon icon={faHeart} />
-        </button>
-        <button type="button">
-          <FontAwesomeIcon icon={faBagShopping} />
-        </button>
-      </div>
-    </nav>
+        <div className="button-area">
+          <button type="button">
+            {authenticate === false ? (
+              <FontAwesomeIcon icon={faUser} onClick={goToLogin} />
+            ) : (
+              <FontAwesomeIcon icon={faUserMinus} onClick={logout} />
+            )}
+          </button>
+          <button type="button" onClick={() => useSearchToggle(searchToggle)}>
+            <FontAwesomeIcon icon={faMagnifyingGlass} />
+          </button>
+          <button type="button">
+            <FontAwesomeIcon icon={faHeart} />
+          </button>
+          <button type="button">
+            <FontAwesomeIcon icon={faBagShopping} />
+          </button>
+        </div>
+      </nav>
+    </div>
   );
 };
 

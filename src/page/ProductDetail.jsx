@@ -14,7 +14,6 @@ const ProductDetail = () => {
     let url = `https://my-json-server.typicode.com/jh-y10/spao-router-practice/products/${id}`;
     let response = await fetch(url);
     let data = await response.json();
-    console.log(data);
     setProduct(data);
   };
 

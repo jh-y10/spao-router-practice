@@ -36,7 +36,7 @@ const SideMenu = ({
   };
 
   return (
-    <div className={sideBar === true ? "side-bar s-active" : "side-bar"}>
+    <div className={sideBar ? "side-bar s-active" : "side-bar"}>
       <button type="button" onClick={() => setSideBar(false)}>
         <FontAwesomeIcon icon={faBars} />
       </button>
